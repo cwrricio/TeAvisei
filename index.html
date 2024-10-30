@@ -16,9 +16,9 @@
             <a href="index.html" class="logo-text">TeAvisei</a>
         </div>
         <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Sobre</a>
-            <a href="#">Contato</a>
+            <a href="index.html">Home</a>
+            <a href="#como-funciona">Sobre</a>
+            <a href="#fale-conosco">Contato</a>
             <a href="#" class="sign-up">Quero criar meu site</a>
         </nav>
     </header>
@@ -39,10 +39,10 @@
 
     <section class="sobre-section">
         <div class="sobre">
-            <h1>Como funciona?</h1>
+            <h1 id="como-funciona">Como funciona?</h1>
             <div class="sobre-conteudo">
                 <p>Mostre para seus amigos que você sabe muito! <b>Clique em "Quero criar meu site"</b>, preencha um breve formulário com o nome de quem você quer "avisar", uma mensagem personalizada e faça o upload de suas imagens favoritas — <b>especialmente aqueles prints que provam que você estava certo</b> 🏆</p>
-                <p>Você receberá um QR Code no seu e-mail. <b>Esse código é o seu comprovante:</b> compartilhe com quem quiser e acompanhe o contador de tempo mostrando exatamente quando você avisou que algo não daria certo - <span style="color: #ff0080;">a partir de R$9,99</span> ☝🏻😜</p>
+                <p>Você receberá um QR Code no seu e-mail. <b>Esse código é o seu comprovante:</b> compartilhe com quem quiser e acompanhe o contador de tempo mostrando exatamente quando você avisou que algo não daria certo - <span style="color: #ff0080;">a partir de R$9,90</span> ☝🏻😜</p>
 
             </div>
             <div class="gif-container">
@@ -99,11 +99,38 @@
            
         </ul>
     </div>
-</div>
-
-           
+</div>   
         </div>
     </section>
+
+    <div class="contact-section">
+        <div class="contact-info">
+            <h1 class="contact-title">Dúvidas? Entre em contato conosco 📞</h1>
+           
+            <!-- Espaço reservado para futuras imagens -->
+            <div class="contact-images">
+               <img src="./assets/img/duvida.png">
+            </div>
+        </div>
+        
+        <div class="contact-card">
+            <h2 id="fale-conosco">Fale conosco</h2>
+            <form>
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome">
+                
+                <label for="email">Email <span>*</span></label>
+                <input type="email" id="email" name="email" placeholder="Digite seu email">
+                
+                <label for="message">Mensagem</label>
+                <textarea id="message" name="message" placeholder="Digite sua mensagem"></textarea>
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./scripts/detectarrolagem.js"></script>
 
 
 </body>

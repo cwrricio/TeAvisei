@@ -5,6 +5,27 @@
     box-sizing: border-box;
 }
 
+/* Estilo inicial do cabeçalho */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Altura inicial menor */
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.3s, height 0.3s;
+    z-index: 1000; /* Para garantir que o cabeçalho esteja acima do conteúdo */
+  }
+  
+  /* Altura aumentada para visibilidade quando o usuário rola */
+  header.expanded {
+    height: 80px; /* Aumenta a altura ao reaparecer */
+  }
+  
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -23,6 +44,7 @@ header {
 }
 
 header .logo {
+ 
     display: flex;
     align-items: center;
     margin-right: 20px;
@@ -30,12 +52,18 @@ header .logo {
 
 .logo-img {
     width: 60px; 
-    height: auto;
+    margin-top: 25px;
+    height:  auto;
     margin-right: 10px;
+}
+.logo-img:hover{
+transform: scale(1.20);
+transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .logo-text {
     color: #6c00ff; 
+    margin-top: 20px;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
     font-size: 36px;
     font-weight: 700;
@@ -47,9 +75,12 @@ header .logo {
 
 .logo-text:hover {
     color: #ff0080; 
+    transform: scale(1.05);
+transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 header .nav-links a {
+    margin-top: 25px;
     color: #6c00ff;
     margin: 0 15px;
     text-decoration: none;
@@ -75,6 +106,7 @@ header .nav-links a:not(.sign-up):hover::after {
 }
 
 header .nav-links .sign-up {
+    margin-top: 25px;
     display: inline-block; 
     padding: 8px 20px;
     background-color: #6c00ff;
@@ -95,6 +127,7 @@ header .nav-links .sign-up:hover {
 
 
 .main-content {
+    margin-top: 20px;
     display: flex;
     align-items: center;
     max-width: 1200px;
@@ -267,7 +300,7 @@ h1 {
     left: 0; /* inicia o underline na esquerda */
     width: 0;
     height: 2px;
-    background-color: #ff0080;
+
     transition: width 0.3s ease;
 }
 
@@ -285,7 +318,7 @@ h1 {
 .card {
     position: relative;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 14px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 300px;
@@ -418,3 +451,114 @@ h1 {
 .recommended {
     border-top: 5px solid #007bff;
 }
+
+
+/* Container principal */
+/* Container principal da seção de contato */
+.contact-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px;
+    gap: 50px;
+}
+
+/* Estilização do título seguindo o h1 do início da landing page */
+.contact-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #6c00ff; /* Cor de destaque */
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilização do conteúdo à esquerda (texto e espaço para imagens) */
+.contact-info {
+    max-width: 40%; /* Ajuste de largura para dar espaço ao formulário */
+}
+
+.contact-info p {
+    max-width: 400px; /* Ajusta a largura do container à direita */
+    text-align: center; /* Centraliza o título e a imagem */
+}
+
+/* Espaço para adicionar imagens futuramente */
+.contact-images {
+    margin-top: 20px;
+    /* Adicione estilos adicionais para as imagens, se necessário */
+}
+
+/* Estilização do cartão de contato à direita */
+.contact-card {
+    background-color: #4e89fc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px; /* Ajuste do tamanho para tornar o formulário maior */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+    color: #ffffff;
+    transform: translateX(-40px); /* Ajuste a posição para mover o formulário mais à esquerda */
+}
+
+.contact-card h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.contact-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-card label {
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.contact-card input,
+.contact-card textarea {
+    background-color: #f3f7fb;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.contact-card input[type="text"],
+.contact-card input[type="email"] {
+    height: 35px;
+}
+
+.contact-card textarea {
+    height: 80px;
+    resize: none;
+}
+
+/* Botão de envio com efeito de hover */
+.contact-card button {
+    background-color: #ff0080;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-card button:hover {
+    background-color: #ff4da6;
+}
+
+.contact-images {
+    margin-top: 20px;
+}
+
+.contact-images img {
+    width: 40%;
+    border-radius: 8px;
+    margin-top: 20px;
+    transform: translateX(140px);
+}
+
