@@ -1,0 +1,362 @@
+header {
+    width: 100%;
+    max-width: 1200px; /* Ajuste na largura máxima */
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os elementos quebrem linha se necessário */
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    background-color: rgb(250, 250, 250);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+header .logo {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.logo-img {
+    width: 50px; /* Reduzi o tamanho da imagem para ajustar melhor o cabeçalho */
+    margin-right: 10px;
+    height: auto;
+}
+.logo-img:hover{
+transform: scale(1.20);
+transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.logo-text {
+    color: #6c00ff;
+    font-size: 28px; /* Reduzi o tamanho da fonte */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+
+.logo-text:hover {
+    color: #ff0080; 
+    transform: scale(1.05);
+transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+header .nav-links a {
+    margin-top: 25px;
+    color: #6c00ff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+header .nav-links a:not(.sign-up)::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff0080;
+    transition: width 0.3s ease;
+}
+
+header .nav-links a:not(.sign-up):hover::after {
+    width: 100%; 
+}
+
+header .nav-links .sign-up {
+    display: inline-block;
+    padding: 8px 15px; /* Ajuste no padding para caber o texto */
+    background-color: #6c00ff;
+    color: #fff;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+header .nav-links .sign-up:hover {
+    transform: scale(1.1); 
+    background-color: #6c00ff; 
+    color: #fff; 
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+    margin-top: 30px;
+    padding-top: 80px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column; /* Mudamos para coluna para organizar melhor */
+    align-items: flex-start; /* Alinhar todos os itens à esquerda */
+}
+
+/* Estilos do container de planos */
+.plan-options {
+    display: flex;
+    justify-content: center; /* Justificar à esquerda */
+    margin: 0 auto 20px;
+    border: 2px solid #FF4769;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    padding: 5px;
+    width: 100%;
+    max-width: 1000px; /* Manter a largura máxima */
+    box-shadow: 0 4px 5px rgba(255, 71, 105, 0.5); /* Efeito de sombra para dar brilho */
+}
+
+
+.botaopreco {
+    flex: 1; /* Isso garante que os botões ocupem o mesmo espaço */
+    padding: 8px;
+    margin: 0 5px;
+    color: #000000;
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.botaopreco:hover {
+    background-color: #FF4769;
+    color: #ffffff;
+}
+
+.form-and-text-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    max-width: 700px; /* Limita a largura máxima para manter consistência com "Planos" */
+    padding: 20px;
+
+}
+
+/* Estilo do Formulário */
+.form {
+    flex: 1; /* Ocupa metade do espaço total */
+    padding: 20px;
+    border: 2px solid #ff6b6b;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 630px; 
+}
+
+.form label {
+    font-weight: bold;
+}
+
+.form-and-text-container {
+    display: flex;
+    
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.form-section {
+    display: none;
+    width: 50%; /* Ajusta para ocupar 50% da largura do container */
+    max-width: 400px;
+    margin-top: 7px; /* Margem superior para espaçar do container de planos */
+    margin-left: 0; /* Remover margem esquerda */
+    background-color: #f9f9f9;
+    padding: 20px;
+    color: #333;
+    padding-right: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #FF4769;
+    box-shadow: 0 4px 5px rgba(255, 71, 105, 0.5); /* Efeito de sombra para dar brilho */
+}
+
+.form-section.active {
+    display: block;
+}
+
+label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="url"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #0077cc;
+    background-color: #fff;
+}
+
+button[type="submit"] {
+    background-color: #f9f9f9; /* Cor de fundo */
+    color: #000; /* Cor do texto */
+    font-size: 1.2rem; /* Aumenta o tamanho da fonte */
+    padding: 15px 30px; /* Aumenta o padding para maior área clicável */
+    border: 2px solid #FF4769; /* Adiciona uma borda */
+    border-radius: 20px; /* Aumenta o arredondamento dos cantos */
+    cursor: pointer; /* Muda o cursor para mão ao passar o mouse */
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Transições para os efeitos */
+    display: block; /* Faz o botão se comportar como um bloco */
+    margin: 0 auto; /* Centraliza o botão */
+    margin-top: 7px;
+     
+}
+
+button[type="submit"]:hover {
+    background-color: #FF4769; /* Cor ao passar o mouse */
+    color: #fff; /* Muda a cor do texto ao passar o mouse */
+    box-shadow: 0 4px 15px rgba(255, 71, 105, 0.5); /* Efeito de sombra para dar brilho */
+}
+
+/* Esconde o botão original */
+input[type="file"] {
+    display: none;
+}
+
+/* Estilo para o botão personalizado */
+.custom-file-label {
+    background-color:  #f9f9f9;
+    color: #333;
+    padding: 6px 7px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    border: 2px solid #a49f9f;
+}
+
+.custom-file-label:hover {
+    background-color: #FF4769;
+    border-color: #FF4769;
+    color: #fff;
+}
+
+.text {
+    max-width: 500px;
+    background-color:#f9f9f9;
+   margin-top: 0;
+    margin-left: 5px;
+    padding: 10px;
+    margin: 15px 0;
+    text-align: justify;
+    margin-bottom: 20px;
+    transform: translateY(-25px);
+}
+}
+
+.text h1 {
+    font-size: 28px;
+    color: #6c00ff;
+    margin-bottom: 15px;
+    text-shadow: 0px 1px 3px #6c00f;
+    transition: transform 0.3s ease;
+}
+
+.text h1:hover {
+    transform: scale(1.05);
+}
+
+.text p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.text li {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.4;
+    margin: 8px 0;
+    font-weight: 600;
+    list-style: none;
+    text-align: left;
+    position: relative;
+    transition: color 0.3s ease; /* Adiciona transição de cor */
+}
+
+.text li strong {
+    color: #6c00ff; /* Cor inicial */
+    font-weight: bold;
+    font-size: 16px; /* Tamanho aumentado */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s ease; /* Adiciona transição de cor */
+}
+
+.text li strong:hover {
+    color: #ff0080; /* Cor rosa ao passar o mouse */
+}
+
+/* Estilização para o título dos itens da lista */
+.text h1 {
+    font-size: 30px;
+    color: #6c00ff; /* Cor inicial */
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s ease; /* Adiciona transição de cor */
+}
+
+.text h1:hover {
+    color: #ff0080; /* Cor rosa ao passar o mouse */
+}
+@media (max-width: 768px) {
+    .form-and-text-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-section, .text {
+        width: 100%;
+    }
+}
+
+.gif-pix {
+    width: 200px;
+    height: auto;
+    margin-top: 15px;
+    transform: translateY(-50px);
+}
+

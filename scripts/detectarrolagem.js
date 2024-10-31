@@ -21,24 +21,22 @@ window.addEventListener("scroll", () => {
 
 
 document.querySelector("a[href='#como-funciona']").addEventListener("click", (event) => {
-    event.preventDefault(); // Impede o comportamento padrão do link
-    const target = document.querySelector("#como-funciona");
-    const offsetTop = target.offsetTop - 50; // Ajuste de 50px para baixo
-  
-    window.scrollTo({
-      top: offsetTop,
-      behavior: "smooth"
-    });
+  event.preventDefault(); // Impede o comportamento padrão do link
+  const target = document.querySelector("#como-funciona");
+  const offsetTop = target.offsetTop + target.offsetHeight - 145; // Ajuste de 20px para baixo
+
+  window.scrollTo({
+    top: offsetTop,
+    behavior: "smooth"
   });
+});
 
-
-  
-  document.querySelector('a[href="#fale-conosco"]').addEventListener("click", function(event) {
-    event.preventDefault();
-    const targetSection = document.querySelector("#fale-conosco");
-    const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset - 80; // Ajuste de 80px
-    window.scrollTo({
-      top: offsetTop,
-      behavior: "smooth"
-    });
+document.querySelector('a[href="#fale-conosco"]').addEventListener("click", function(event) {
+  event.preventDefault();
+  const targetSection = document.querySelector("#fale-conosco");
+  const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset - 80; // Ajuste de 80px
+  window.scrollTo({
+    top: offsetTop,
+    behavior: "smooth"
+  });
 });
