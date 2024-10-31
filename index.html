@@ -19,7 +19,7 @@
             <a href="index.html">Home</a>
             <a href="#como-funciona">Sobre</a>
             <a href="#fale-conosco">Contato</a>
-            <a href="#" class="sign-up">Quero criar meu site</a>
+            <a href="pages/form.html" class="sign-up">Quero criar meu site</a>
         </nav>
     </header>
 
@@ -28,7 +28,9 @@
             <h1>Jogue na cara aquilo que você já sabia, mas o mundo ainda não</h1>
             <p><b>A quanto tempo você estava certo sobre algo?</b> Registre aqui o momento exato em que você sabia que estava certo e acompanhe quanto tempo o mundo levou para perceber. <b>Aponte o QR Code e compartilhe!</b></p>
             <div class="buttons">
+                <a href="pages/form.html">
                 <button class="play-download">Quero criar meu site</button>
+            </a>
             </div>
         </div>
 
@@ -59,7 +61,9 @@
         <p class="old-price">R$ 19,80</p>
         <p class="discount">50% OFF</p>
         <p class="price">R$ 9,90</p>
-        <button class="btn">Quero esse!</button>
+        <a href="pages/form.html">
+            <button class="btn highlighted">Quero esse!</button>
+        </a>
         <ul class="features">
             <li>Contador dinâmico de tempo</li>
             <li>6 meses de acesso</li>
@@ -73,7 +77,9 @@
         <p class="old-price">35,80</p>
         <p class="discount">50% OFF</p>
         <p class="price">R$ 17,90</p>
-        <button class="btn">Quero esse!</button>
+        <a href="pages/form.html">
+            <button class="btn highlighted">Quero esse!</button>
+        </a>
         <ul class="features">
             <li>Contador dinâmico de tempo</li>
             <li><b>1 ano de acesso</b></li>
@@ -85,10 +91,12 @@
     <div class="card">
         <h3>DUVIDO</h3>
         <p class="description">Para você que tem <b>CERTEZA</b> que está certo</p>
-        <p class="old-price">89,80</p>
+        <p class="old-price">49,8</p>
         <p class="discount">50% OFF</p>
-        <p class="price"><b>R$ 44,90</b></p>
+        <p class="price"><b>R$ 24,90</b></p>
+        <a href="pages/form.html">
         <button class="btn highlighted">Quero esse!</button>
+    </a>
         <ul class="features">
             <li>Contador dinâmico de tempo</li>
             <li><b>Acesso permanente</b></li>
@@ -105,7 +113,7 @@
 
     <div class="contact-section">
         <div class="contact-info">
-            <h1 class="contact-title">Dúvidas? Entre em contato conosco 📞</h1>
+            <h1 id="fale-conosco" class="contact-title">Dúvidas? Entre em contato conosco 📞</h1>
            
             <!-- Espaço reservado para futuras imagens -->
             <div class="contact-images">
@@ -114,24 +122,61 @@
         </div>
         
         <div class="contact-card">
-            <h2 id="fale-conosco">Fale conosco</h2>
-            <form>
+            <form onsubmit="enviarEmail(event)">
                 <label for="name">Nome</label>
-                <input type="text" id="name" name="name" placeholder="Digite seu nome">
-                
+                <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
+
                 <label for="email">Email <span>*</span></label>
-                <input type="email" id="email" name="email" placeholder="Digite seu email">
-                
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+
                 <label for="message">Mensagem</label>
-                <textarea id="message" name="message" placeholder="Digite sua mensagem"></textarea>
-                
-                <button type="submit">Enviar</button>
+                <textarea id="message" name="message" placeholder="Digite sua mensagem" required></textarea>
+
+                <button type="submit" id="submit-btn">Enviar</button>
             </form>
         </div>
     </div>
 
-    <script src="./scripts/detectarrolagem.js"></script>
+    <!-- Modal de Confirmação -->
+    <div id="modal-confirmacao" style="display: none;">
+        <div class="modal">
+            <h3 class="modal-title">Seu e-mail foi enviado com sucesso!</h3>
+            <p class="modal-message">Entraremos em contato em breve.</p>
+            <button class="modal-button" onclick="fecharModal()">Fechar</button>
+        </div>
+    <script>
+async function enviarEmail(event) {
+    event.preventDefault();
 
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
 
+    try {
+        const response = await fetch('http://localhost:3000/enviar-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, message })
+        });
+
+        if (response.ok) {
+            exibirModalConfirmacao();
+        } else {
+            alert('Erro ao enviar o email. Tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao enviar o email. Tente novamente.');
+    }
+}
+
+function exibirModalConfirmacao() {
+    document.getElementById('modal-confirmacao').style.display = 'block';
+}
+
+function fecharModal() {
+    document.getElementById('modal-confirmacao').style.display = 'none';
+}
+    </script>
 </body>
 </html>

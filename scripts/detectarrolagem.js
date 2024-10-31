@@ -41,4 +41,4 @@ document.querySelector("a[href='#como-funciona']").addEventListener("click", (ev
       top: offsetTop,
       behavior: "smooth"
     });
-  });
+});

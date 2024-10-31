@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <style>
+        .form-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #form-basico {
+            display: block;
+        }
+
+        #qr-code-container {
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <div class="plan-options">
+        <button onclick="exibirFormulario('basico')">Plano Básico - R$9,90</button>
+        <button onclick="exibirFormulario('recomendado')">Plano Recomendado - R$17,90</button>
+        <button onclick="exibirFormulario('completo')">Plano Completo - R$45,90</button>
+    </div>
+
+    <!-- Formulário do Plano Básico -->
+    <div id="form-basico" class="form-section">
+        <form id="form-casal-basico" onsubmit="criarContador(event, 'basico')">
+            <label for="nome-basico">Nome:</label>
+            <input type="text" id="nome-basico" placeholder="Quem foi avisado" required>
+
+            <label for="data-aviso-basico">Data em que você avisou:</label>
+            <input type="date" id="data-aviso-basico" required>
+            <input type="time" id="hora-aviso-basico" required>
+
+            <label for="mensagem-basico">Mensagem:</label>
+            <textarea id="mensagem-basico" placeholder="Escreva aqui sua mensagem"></textarea>
+
+            <label for="imagem-basico">Escolher uma imagem:</label>
+            <input type="file" id="imagem-basico" accept="image/*" required>
+
+            <button type="submit">Criar Contador</button>
+        </form>
+    </div>
+
+    <!-- Formulário do Plano Recomendado -->
+    <div id="form-recomendado" class="form-section">
+        <form id="form-casal-recomendado" onsubmit="criarContador(event, 'recomendado')">
+            <label for="nome-recomendado">Nome:</label>
+            <input type="text" id="nome-recomendado" placeholder="Quem foi avisado" required>
+
+            <label for="data-aviso-recomendado">Data em que você avisou:</label>
+            <input type="date" id="data-aviso-recomendado" required>
+            <input type="time" id="hora-aviso-recomendado" required>
+
+            <label for="mensagem-recomendado">Mensagem:</label>
+            <textarea id="mensagem-recomendado" placeholder="Escreva aqui sua mensagem"></textarea>
+
+            <label for="imagens-recomendado">Escolher até 3 imagens:</label>
+            <input type="file" id="imagens-recomendado" accept="image/*" multiple required>
+
+            <button type="submit">Criar Contador</button>
+        </form>
+    </div>
+
+    <!-- Formulário do Plano Completo -->
+    <div id="form-completo" class="form-section">
+        <form id="form-casal-completo" onsubmit="criarContador(event, 'completo')">
+            <label for="nome-completo">Nome:</label>
+            <input type="text" id="nome-completo" placeholder="Quem foi avisado" required>
+
+            <label for="data-aviso-completo">Data em que você avisou:</label>
+            <input type="date" id="data-aviso-completo" required>
+            <input type="time" id="hora-aviso-completo" required>
+
+            <label for="mensagem-completo">Mensagem:</label>
+            <textarea id="mensagem-completo" placeholder="Escreva aqui sua mensagem"></textarea>
+
+            <label for="imagens-completo">Escolher até 5 imagens:</label>
+            <input type="file" id="imagens-completo" accept="image/*" multiple required>
+
+            <label for="video-completo">Link para vídeo no YouTube:</label>
+            <input type="url" id="video-completo" placeholder="https://www.youtube.com/watch?v=ID-do-video">
+
+            <button type="submit">Criar Contador</button>
+        </form>
+    </div>
+
+    <div id="qr-code-container"></div>
+
+    <script>
+        function exibirFormulario(plano) {
+            // Oculta todos os formulários primeiro
+            document.querySelectorAll('.form-section').forEach((formSection) => {
+                formSection.style.display = 'none';
+            });
+
+            // Exibe o formulário correspondente ao plano selecionado
+            document.getElementById(`form-${plano}`).style.display = 'block';
+        }
+
+        function criarContador(event, plano) {
+            event.preventDefault();
+
+            const form = event.target;
+            const nome = form.querySelector('input[type="text"]').value;
+            const data = form.querySelector('input[type="date"]').value;
+            const hora = form.querySelector('input[type="time"]').value;
+            const mensagem = form.querySelector('textarea').value;
+            const imagens = Array.from(form.querySelector('input[type="file"][accept="image/*"]').files);
+            const videoLink = form.querySelector('input[type="url"]') ? form.querySelector('input[type="url"]').value : null;
+
+            const dataHora = `${data}T${hora}`;
+            const maxImages = plano === 'recomendado' ? 3 : plano === 'completo' ? 5 : 1;
+            const imagensSelecionadas = imagens.slice(0, maxImages);
+
+            imagensSelecionadas.forEach((imagem, index) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    localStorage.setItem(`imagem${index + 1}-${plano}`, reader.result);
+                };
+                reader.readAsDataURL(imagem);
+            });
+
+            if (videoLink && plano === 'completo') {
+                localStorage.setItem(`video-${plano}`, videoLink);
+            }
+
+            const contadorURL = `contador.html?nome=${encodeURIComponent(nome)}&dataHora=${encodeURIComponent(dataHora)}&mensagem=${encodeURIComponent(mensagem)}&plano=${plano}`;
+
+            window.open(contadorURL, '_blank');
+        }
+    </script>
+</body>
+</html>

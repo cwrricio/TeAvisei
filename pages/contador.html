@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        .media {
+            max-width: 90%;
+            height: auto;
+            margin: 10px 0;
+            display: block;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo"></h1>
+    <p id="mensagem-exibida"></p>
+    <div id="media-content"></div>
+
+    <script>
+        function getQueryParam(param) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(param);
+        }
+
+        const nome = getQueryParam('nome');
+        const dataHoraInserida = getQueryParam('dataHora');
+        const mensagem = getQueryParam('mensagem');
+        const plano = getQueryParam('plano');
+
+        document.getElementById('mensagem-exibida').textContent = mensagem;
+
+        setInterval(() => {
+            const agora = new Date();
+            const dataAviso = new Date(dataHoraInserida);
+
+            const diff = agora - dataAviso;
+            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('titulo').textContent = ` ${nome}, faz ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos que eu te avisei que:`;
+        }, 1000);
+
+        const mediaContent = document.getElementById('media-content');
+
+        // Carregar imagens do localStorage com limite de acordo com o plano
+        const maxImages = plano === 'recomendado' ? 3 : plano === 'completo' ? 5 : 1;
+        for (let i = 1; i <= maxImages; i++) {
+            const imagem = localStorage.getItem(`imagem${i}-${plano}`);
+            if (imagem) {
+                const imgElement = document.createElement('img');
+                imgElement.src = imagem;
+                imgElement.className = 'media';
+                mediaContent.appendChild(imgElement);
+            }
+        }
+
+        // Carregar vídeo do YouTube se disponível no plano completo
+        const videoLink = localStorage.getItem(`video-${plano}`);
+        if (videoLink && plano === 'completo') {
+            const iframe = document.createElement('iframe');
+            iframe.src = videoLink.replace("watch?v=", "embed/");
+            iframe.width = "560";
+            iframe.height = "315";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            iframe.allowFullscreen = true;
+            iframe.className = 'media';
+            mediaContent.appendChild(iframe);
+        }
+    </script>
+</body>
+</html>
