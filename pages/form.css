@@ -205,6 +205,7 @@ label {
 }
 
 input[type="text"],
+input[type="email"], 
 input[type="date"],
 input[type="time"],
 input[type="url"],
@@ -283,7 +284,6 @@ input[type="file"] {
     text-align: justify;
     margin-bottom: 20px;
     transform: translateY(-25px);
-}
 }
 
 .text h1 {

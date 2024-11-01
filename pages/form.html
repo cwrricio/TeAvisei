@@ -32,63 +32,56 @@
     <div class="form-and-text-container">
         <!-- Formulário do Plano Básico -->
         <div id="form-basico" class="form-section active">
-            <form id="form-casal-basico" onsubmit="criarContador(event, 'basico')">
+            <form id="form-casal-basico" enctype="multipart/form-data" onsubmit="criarContador(event, 'basico')">
                 <label for="nome-basico">Nome:</label>
-                <input type="text" id="nome-basico" placeholder="Quem foi avisado" required>
-
+                <input type="text" id="nome-basico" name="nome" placeholder="Quem foi avisado" required>
+                <label for="email-basico">Email:</label>
+                <input type="email" id="email-basico" name="email" placeholder="Seu email" required>
                 <label for="data-aviso-basico">Data e horário em que você avisou:</label>
-                <input type="date" id="data-aviso-basico" required>
-                <input type="time" id="hora-aviso-basico" required>
-
+                <input type="date" id="data-aviso-basico" name="dataHora" required>
+                <input type="time" id="hora-aviso-basico" name="hora" required>
                 <label for="mensagem-basico">Mensagem:</label>
-                <textarea id="mensagem-basico" placeholder="Escreva aqui sua mensagem, seja descritivo!"></textarea>
-
+                <textarea id="mensagem-basico" name="mensagem" placeholder="Escreva aqui sua mensagem, seja descritivo!" required></textarea>
                 <label for="imagem-basico" class="custom-file-label">Escolher uma imagem</label>
-                <input type="file" id="imagem-basico" accept="image/*" required>
-
+                <input type="file" id="imagem-basico" name="imagem-basico" accept="image/*" required>
                 <button type="submit">Gerar Contador</button>
             </form>
         </div>
-
+        
         <!-- Formulário do Plano Recomendado -->
-        <div id="form-recomendado" class="form-section">
-            <form id="form-casal-recomendado" onsubmit="criarContador(event, 'recomendado')">
+        <div id="form-recomendado" class="form-section" style="display:none;">
+            <form id="form-casal-recomendado" enctype="multipart/form-data" onsubmit="criarContador(event, 'recomendado')">
                 <label for="nome-recomendado">Nome:</label>
-                <input type="text" id="nome-recomendado" placeholder="Quem foi avisado" required>
-
+                <input type="text" id="nome-recomendado" name="nome" placeholder="Quem foi avisado" required>
+                <label for="email-recomendado">Email:</label>
+                <input type="email" id="email-recomendado" name="email" placeholder="Seu email" required>
                 <label for="data-aviso-recomendado">Data e horário em que você avisou:</label>
-                <input type="date" id="data-aviso-recomendado" required>
-                <input type="time" id="hora-aviso-recomendado" required>
-
+                <input type="date" id="data-aviso-recomendado" name="dataHora" required>
+                <input type="time" id="hora-aviso-recomendado" name="hora" required>
                 <label for="mensagem-recomendado">Mensagem:</label>
-                <textarea id="mensagem-recomendado" placeholder="Escreva aqui sua mensagem, seja descritivo!"></textarea>
-
+                <textarea id="mensagem-recomendado" name="mensagem" placeholder="Escreva aqui sua mensagem, seja descritivo!" required></textarea>
                 <label for="imagem-recomendado" class="custom-file-label">Escolher até 3 imagens</label>
-                <input type="file" id="imagem-recomendado" accept="image/*" multiple>
-
+                <input type="file" id="imagem-recomendado" name="imagem-recomendado" accept="image/*" multiple required>
                 <button type="submit">Gerar Contador</button>
             </form>
         </div>
-
+        
         <!-- Formulário do Plano Completo -->
-        <div id="form-completo" class="form-section">
-            <form id="form-casal-completo" onsubmit="criarContador(event, 'completo')">
+        <div id="form-completo" class="form-section" style="display:none;">
+            <form id="form-casal-completo" enctype="multipart/form-data" onsubmit="criarContador(event, 'completo')">
                 <label for="nome-completo">Nome:</label>
-                <input type="text" id="nome-completo" placeholder="Quem foi avisado" required>
-
+                <input type="text" id="nome-completo" name="nome" placeholder="Quem foi avisado" required>
+                <label for="email-completo">Email:</label>
+                <input type="email" id="email-completo" name="email" placeholder="Seu email" required>
                 <label for="data-aviso-completo">Data e horário em que você avisou:</label>
-                <input type="date" id="data-aviso-completo" required>
-                <input type="time" id="hora-aviso-completo" required>
-
+                <input type="date" id="data-aviso-completo" name="dataHora" required>
+                <input type="time" id="hora-aviso-completo" name="hora" required>
                 <label for="mensagem-completo">Mensagem:</label>
-                <textarea id="mensagem-completo" placeholder="Escreva aqui sua mensagem, seja descritivo!"></textarea>
-
+                <textarea id="mensagem-completo" name="mensagem" placeholder="Escreva aqui sua mensagem, seja descritivo!" required></textarea>
                 <label for="video-completo">Link para vídeo no YouTube:</label>
-                <input type="url" id="video-completo" placeholder="https://www.youtube.com/watch?v=ID-do-video">
-
+                <input type="url" id="video-completo" name="video" placeholder="https://www.youtube.com/watch?v=ID-do-video" required>
                 <label for="imagem-completo" class="custom-file-label">Escolher até 5 imagens</label>
-                <input type="file" id="imagem-completo" accept="image/*" multiple>
-
+                <input type="file" id="imagem-completo" name="imagem-completo" accept="image/*" multiple required>
                 <button type="submit">Gerar Contador</button>
             </form>
         </div>
@@ -96,6 +89,7 @@
         <div class="text">
             <h1><b>Falta pouco para o registro da sua sabedoria</b></h1>
             <p>Escolha o plano ideal para você. Informe quem você avisou, quando e sobre o quê. Com todos os campos preenchidos, você poderá gerar seu contador personalizado!</p>
+            <ul>
                 <li><strong>Eu Avisei -</strong> 6 meses de acesso, 1 imagem, contador dinâmico.</li>
                 <li><strong>Vai dar m* -</strong> 1 ano de acesso, 3 imagens, contador dinâmico.</li>
                 <li><strong>DUVIDO! -</strong> Acesso permanente, 5 imagens, contador dinâmico, vídeo de sua escolha.</li>
@@ -107,45 +101,42 @@
 
     <script>
         function exibirFormulario(plano) {
-            // Oculta todos os formulários primeiro
             document.querySelectorAll('.form-section').forEach((formSection) => {
                 formSection.style.display = 'none';
             });
-
-            // Exibe o formulário correspondente ao plano selecionado
             document.getElementById(`form-${plano}`).style.display = 'block';
         }
-
+    
         function criarContador(event, plano) {
             event.preventDefault();
-
             const form = event.target;
-            const nome = form.querySelector('input[type="text"]').value;
-            const data = form.querySelector('input[type="date"]').value;
-            const hora = form.querySelector('input[type="time"]').value;
-            const mensagem = form.querySelector('textarea').value;
-            const imagens = Array.from(form.querySelector('input[type="file"][accept="image/*"]').files);
-            const videoLink = form.querySelector('input[type="url"]') ? form.querySelector('input[type="url"]').value : null;
+            const formData = new FormData(form); // Usar diretamente o FormData do formulário
 
-            const dataHora = `${data}T${hora}`;
-            const maxImages = plano === 'recomendado' ? 3 : plano === 'completo' ? 5 : 1;
-            const imagensSelecionadas = imagens.slice(0, maxImages);
+            // Adicione uma verificação para ver o que está sendo enviado
+            console.log('FormData:', Array.from(formData.entries()));
 
-            imagensSelecionadas.forEach((imagem, index) => {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    localStorage.setItem(`imagem${index + 1}-${plano}`, reader.result);
-                };
-                reader.readAsDataURL(imagem);
-            });
-
-            if (videoLink && plano === 'completo') {
-                localStorage.setItem(`video-${plano}`, videoLink);
+            // Se o plano for completo, adiciona o campo de vídeo
+            if (plano === 'completo') {
+                const videoUrl = form.querySelector('input[type="url"]').value;
+                formData.append('video', videoUrl);
             }
-
-            const contadorURL = `contador.html?nome=${encodeURIComponent(nome)}&dataHora=${encodeURIComponent(dataHora)}&mensagem=${encodeURIComponent(mensagem)}&plano=${plano}`;
-
-            window.open(contadorURL, '_blank');
+    
+            fetch('http://localhost:3000/api/contadores', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Erro ao enviar os dados para a API');
+                return response.json();
+            })
+            .then(data => {
+                alert(data.mensagem);
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao gerar o contador: ' + error.message);
+            });
         }
     </script>
 </body>
