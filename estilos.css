@@ -617,3 +617,314 @@ h1 {
     background-color: #ff4da6;
     transform: scale(1.05);
 }
+
+/* Mantendo os estilos originais e adicionando media queries para responsividade */
+
+/* ... (estilos originais permanecem os mesmos até aqui) ... */
+
+/* Media Queries para Responsividade */
+@media screen and (max-width: 1024px) {
+    .main-content {
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .text-content h1 {
+        font-size: 36px;
+    }
+
+    .celular img {
+        width: 350px;
+    }
+
+    .pricing-cards {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card {
+        width: calc(50% - 20px);
+        min-width: 280px;
+    }
+
+    .gif-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gif-coin, .gif-pix {
+        transform: none;
+        margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 15px;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        margin: 8px 0;
+        font-size: 14px;
+    }
+
+    .main-content {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 120px;
+    }
+
+    .text-content {
+        padding: 0 15px;
+    }
+
+    .play-download {
+        transform: none;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .sobre-conteudo {
+        flex-direction: column;
+    }
+
+    .sobre p {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .contact-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .contact-info {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .contact-card {
+        width: 100%;
+        transform: none;
+        margin-top: 20px;
+    }
+
+    .contact-images img {
+        width: 60%;
+        transform: none;
+        margin: 20px auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .text-content h1 {
+        font-size: 28px;
+    }
+
+    .text-content p {
+        font-size: 16px;
+    }
+
+    .celular img {
+        width: 280px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .sobre h1 {
+        font-size: 32px;
+    }
+
+    .gif-coin, .gif-pix {
+        width: 200px;
+    }
+
+    .contact-title {
+        font-size: 28px;
+    }
+
+    .modal {
+        width: 90%;
+        max-width: 300px;
+    }
+    .gif-container {
+        gap: 10px;
+    }
+
+    .gif-coin, .gif-pix {
+        width: 120px;
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media screen and (max-width: 320px) {
+    .text-content h1 {
+        font-size: 24px;
+    }
+
+    .celular img {
+        width: 240px;
+    }
+
+    .logo-text {
+        font-size: 28px;
+    }
+
+    .logo-img {
+        width: 50px;
+    }
+}
+
+/* Ajustes para o menu de navegação em dispositivos móveis */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        background-color: rgb(250, 250, 250);
+        padding: 10px 0;
+    }
+
+    .nav-links .sign-up {
+        margin: 10px 0;
+        padding: 10px 30px;
+    }
+
+    header.expanded {
+        height: auto;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+    }
+
+    .mobile-sidebar {
+        display: block;
+    }
+
+    header .nav-links {
+        display: none;
+    }
+
+    header .logo {
+        margin: 0 auto;
+    }
+
+    .gif-container {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .gif-coin, .gif-pix {
+        width: 150px;
+    }
+}
+
+/* Melhorias na acessibilidade para toque em dispositivos móveis */
+@media (hover: none) {
+    .nav-links a,
+    .buttons button,
+    .card .btn {
+        padding: 12px 20px;
+    }
+
+    .features li {
+        padding: 8px 0;
+    }
+}
+
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 1001;
+    padding: 20px;
+    display: none;
+}
+
+.mobile-sidebar.active {
+    left: 0;
+}
+
+.mobile-sidebar .sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 60px;
+}
+
+.mobile-sidebar .sidebar-links a {
+    color: #6c00ff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-sidebar .sidebar-links a:hover {
+    background-color: #f0f0f0;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1002;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #6c00ff;
+    transition: transform 0.3s ease;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+}
+
+/* Ajustes para os GIFs em telas responsivas */
+.gif-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.gif-coin, .gif-pix {
+    width: 200px;
+    height: auto;
+    transform: none;
+}
